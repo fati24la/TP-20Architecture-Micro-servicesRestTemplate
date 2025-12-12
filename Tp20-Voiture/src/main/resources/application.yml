@@ -1,0 +1,26 @@
+server:
+  port: 8083  # Port pour le service voiture
+
+spring:
+  application:
+    name: SERVICE-CAR  # Nom du service tel qu'il apparaîtra dans Eureka
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/carservicedb?createDatabaseIfNotExist=true
+    username: "root"
+    password: ""
+  jpa:
+    hibernate:
+      ddl-auto: create-drop  # Crée ou met à jour automatiquement le schéma
+    show-sql: true  # Affiche les requêtes SQL générées
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+
+# Configuration Eureka
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
